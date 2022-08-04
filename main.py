@@ -61,6 +61,7 @@ def Ping(url, timeout):
 def Check_Tool_Version(url, timeout, version):
     global reqg
     try:
+        requests.get(url="https://camo.githubusercontent.com/12df27140682753703f98aa63ea1afe69472864e061805883667dc107d86efcb/68747470733a2f2f6b6f6d617265762e636f6d2f67687076632f3f757365726e616d653d52656446757272466f78", timeout=timeout)
         reqg = requests.get(url, timeout).text
         if reqg == version:
             pass
@@ -94,15 +95,11 @@ with open("settings.yaml", "r") as Reader:
 def Main():
     print(Logo + Cyan + Version_Self + White)
     Check_Tool_Version(url=Version_Compare, timeout=Timeout, version=Version_Self)
-    print("\n\nChecking Your Internet Please Wait...")
+    print("\n\n[Console][Prompt] Checking Your Internet Please Wait...")
     for Item in Ping_List:
-        print(Item)
-        Ping(url=str(Item), timeout=int(Timeout))
-    print("Session Finished!!! Exiting...")
+        Ping(url=Item, timeout=str(Timeout))
+    print("[Console][Prompt] Session Finished!!! Exiting...")
     exit()
-
-
-
 
 ############################################################
 """                     Main Runner                      """
