@@ -32,6 +32,20 @@ Logo = f"""{Green}@@@@@@@   @@@  @@@  @@@   @@@@@@@@
  ::        ::   ::   ::   ::: ::::
  :        :    ::    :    :: :: : """
 
+Settings_Template = """Settings:
+
+  Ping_List:
+    - https://google.com
+    - https://facebook.com
+    - https://github.com
+
+  Default_Value:
+    Timeout: 5
+
+  Version_Control:
+    Compare: ""
+    Version: v1.0"""
+
 ############################################################
 """                      Functions                       """
 ############################################################
@@ -75,7 +89,8 @@ def Check_And_Create_Settings_Yaml():
         pass
     else:
         with open("settings.yaml", "w") as Writer:
-            Writer.write("")
+            Writer.write(Settings_Template)
+            Writer.close()
 
 ############################################################
 """                   Settings Reader                    """
