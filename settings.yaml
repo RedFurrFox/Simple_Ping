@@ -1,0 +1,13 @@
+Settings:
+
+  Ping_List:
+    - https://google.com
+    - https://facebook.com
+    - https://github.com
+
+  Default_Value:
+    Timeout: 5
+
+  Version_Control:
+    Compare: ""
+    Version: v1.0
