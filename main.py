@@ -43,7 +43,7 @@ Settings_Template = """Settings:
     Timeout: 5
 
   Version_Control:
-    Compare: ""
+    Compare: https://raw.githubusercontent.com/RedFurrFox/Simple_Ping/main/.resources/.version
     Version: v1.0"""
 
 ############################################################
