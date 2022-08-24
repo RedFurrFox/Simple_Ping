@@ -1,7 +1,7 @@
 # Simple_Ping
 Pinging made it more simpler
 
-Status = "Under Development"
+Status = "Finish"
 
 ---
 
