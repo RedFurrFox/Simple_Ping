@@ -8,8 +8,11 @@ import requests
 try:
     import yaml
 except ModuleNotFoundError:
-    print("pyyaml is missing... Automatically installing it for you.")
-    os.system("python -m pip install pyyaml")
+    try:
+        print("yaml not found... Automatically installing it for you.")
+        os.system("python -m pip install pyyaml")
+    except:
+        print('Error occurred while installing "yaml", please manually install it by typing "pip install pyymal".')
 
 ############################################################
 """                       Strings                        """
@@ -43,8 +46,7 @@ Settings_Template = """Settings:
     Timeout: 5
 
   Version_Control:
-    Compare: https://raw.githubusercontent.com/RedFurrFox/Simple_Ping/main/.resources/.version
-    Version: v1.0"""
+    Compare: https://raw.githubusercontent.com/RedFurrFox/Simple_Ping/main/.resources/.version"""
 
 ############################################################
 """                      Functions                       """
@@ -93,15 +95,17 @@ def Check_And_Create_Settings_Yaml():
             Writer.close()
 
 ############################################################
-"""                   Settings Reader                    """
+"""                     Data Reader                      """
 ############################################################
 
-with open("settings.yaml", "r") as Reader:
-    YML = yaml.safe_load(Reader)
+with open("settings.yaml", "r") as Reader_1:
+    YML = yaml.safe_load(Reader_1)
     Ping_List = YML["Settings"]["Ping_List"]
     Timeout = YML["Settings"]["Default_Value"]["Timeout"]
     Version_Compare = YML["Settings"]["Version_Control"]["Compare"]
-    Version_Self = YML["Settings"]["Version_Control"]["Version"]
+
+with open(r"../Simple_Ping/.resources/.version", "r") as Reader_2:
+    Version_Self = Reader_2.read()
 
 ############################################################
 """                    Main Function                     """
@@ -112,7 +116,7 @@ def Main():
     Check_Tool_Version(url=Version_Compare, timeout=Timeout, version=Version_Self)
     print("\n\n[Console][Prompt] Checking Your Internet Please Wait...")
     for Item in Ping_List:
-        Ping(url=Item, timeout=str(Timeout))
+        Ping(url=Item, timeout=Timeout)
     print("[Console][Prompt] Session Finished!!! Exiting...")
     exit()
 
