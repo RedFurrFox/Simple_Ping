@@ -1,6 +1,8 @@
 # Simple_Ping
 Pinging made it more simpler
 
+Status = "Under Development"
+
 ---
 
 ## Join Our Socials: 
