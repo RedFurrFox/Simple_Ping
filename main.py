@@ -14,7 +14,7 @@ except ModuleNotFoundError:
         os.system("python -m pip install pyyaml")
         
     except:
-        print('Error occurred while installing "yaml", please manually install it by typing "pip install pyymal".')
+        print('Error occurred while installing "yaml", please manually install it by typing "pip install pyyaml".')
 
 ############################################################
 """                       Strings                        """
