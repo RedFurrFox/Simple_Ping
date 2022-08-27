@@ -9,8 +9,10 @@ try:
     import yaml
 except ModuleNotFoundError:
     try:
+        
         print("yaml not found... Automatically installing it for you.")
         os.system("python -m pip install pyyaml")
+        
     except:
         print('Error occurred while installing "yaml", please manually install it by typing "pip install pyymal".')
 
@@ -79,6 +81,7 @@ def Ping(purl, ptimeout):
         pass
 
 def Check_Tool_Version(ctvurl, ctvtimeout, ctvversion):
+    
     global reqg2
 
     try:
@@ -98,6 +101,7 @@ def Check_And_Create_Settings_Yaml():
         pass
     else:
         with open("settings.yaml", "w") as Writer:
+            
             Writer.write(Settings_Template)
             Writer.close()
 
@@ -107,14 +111,18 @@ def Check_And_Create_Settings_Yaml():
 
 try:
     with open("settings.yaml", "r") as Reader_1:
+        
         YML = yaml.safe_load(Reader_1)
         Ping_List = YML["Settings"]["Ping_List"]
         Timeout = YML["Settings"]["Default_Value"]["Timeout"]
         Version_Compare = YML["Settings"]["Version_Control"]["Compare"]
+        
 except FileNotFoundError:
     with open("settings.yaml", "w") as Writter:
+        
         Writter.write(Settings_Template)
         Writter.close()
+        
     print("[Console][Tips] Missing Required Files Added. Please Re-run The Script.")
     exit()
 
@@ -130,6 +138,7 @@ except (FileNotFoundError,FileExistsError):
 ############################################################
 
 def Main():
+    
     print(Logo + Cyan + Version_Self + White)
     Check_Tool_Version(ctvurl=Version_Compare, ctvtimeout=Timeout, ctvversion=Version_Self)
     print("\n\n[Console][Prompt] Checking Your Internet Please Wait...")
@@ -151,10 +160,13 @@ def Main():
 
 if __name__ == "__main__":
     Terminal_Cleaner()
+    
     if os.path.isfile("settings.yaml"):
         Main()
     else:
         with open("settings.yaml", "w") as Writter:
+            
             Writter.write(Settings_Template)
             Writter.close()
+            
         Main()
