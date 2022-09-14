@@ -61,7 +61,6 @@ def Terminal_Cleaner():
         os.system("cls")
 
 def Ping(purl, ptimeout):
-
     global reqg1
 
     try:
